@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidXCommentsPackage">
+    <Groups>
+      <Group guid="guidXCommentsPackageCmdSet" id="MyToolbarItemGroup" priority="0x4000" >
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT" />
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="guidXCommentsPackageCmdSet" id="cmdidMyDynamicStartCommand" priority="0x1000" type="Button" >
+        <Parent guid="guidXCommentsPackageCmdSet" id="MyToolbarItemGroup" />
+        <Icon guid="guidImages" id="bmpPic1"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>XComments</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\XComments.png" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+  <VisibilityConstraints>
+    <VisibilityItem guid="guidXCommentsPackageCmdSet" id="cmdidMyDynamicStartCommand" context="UICONTEXT_SolutionExists"/>
+  </VisibilityConstraints>
+  <Symbols>
+    <GuidSymbol name="guidXCommentsPackage" value="{b453521b-57b4-457c-beae-fa73ecc0e008}" />
+    <GuidSymbol name="guidXCommentsPackageCmdSet" value="{ab98f071-6193-40f8-ad98-87a00104190d}">
+      <IDSymbol name="MyToolbarItemGroup" value="0x1020" />
+      <!-- NOTE: The following command expands at run time to some number of ids.  
+     Try not to place command ids after it (e.g. 0x0105, 0x0106).  
+     If you must add a command id after it, make the gap very large (e.g. 0x200) -->
+      <IDSymbol name="cmdidMyDynamicStartCommand" value="0x0104" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImages" value="{c1b79ec1-8c46-4e23-9315-3c6f0890a788}" >
+      <IDSymbol name="bmpPic1" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
