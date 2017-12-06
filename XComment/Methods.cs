@@ -357,7 +357,6 @@ namespace XComment
                 string text = activeDoc.CreateEditPoint(objStart).GetText(objEnd);
                 string editted = delComments(text, filetype);
                 editted = removeWhiteSpace(editted);
-                objStart.ReplaceText(objEnd, editted, (int)vsEPReplaceTextOptions.vsEPReplaceTextNormalizeNewlines);
                 objStart.ReplaceText(objEnd, editted, (int)vsEPReplaceTextOptions.vsEPReplaceTextAutoformat);
             }
         }
