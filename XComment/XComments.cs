@@ -12,9 +12,7 @@ namespace XComment
 
         public static readonly Guid CommandSet = new Guid("ab98f071-6193-40f8-ad98-87a00104190d");
 
-        private readonly Package _package;
-
-        private readonly DTE2 _dte2;
+        private readonly Package _package;        
 
         public static XComments Instance
         {
@@ -36,7 +34,6 @@ namespace XComment
                 OleMenuCommand command = new OleMenuCommand(Callback, commandId);
                 commandService.AddCommand(command);
             }
-            _dte2 = (DTE2)ServiceProvider.GetService(typeof(DTE));
         }
 
         public static void Initialize(Package package)

@@ -280,48 +280,48 @@ namespace XComment
         private static string delComments(string text, string fileType)
         {
             string check = fileType;
-            string editted;
+            string edited;
             switch (check)
             {
                 case "C_CSharp_JScript":
-                    editted = C_CSharp_JScript(text);
-                    return editted;
+                    edited = C_CSharp_JScript(text);
+                    return edited;
                 case "HTML":
-                    editted = HTML(text);
-                    return editted;
+                    edited = HTML(text);
+                    return edited;
                 case "VBasic":
-                    editted = VBasic(text);
-                    return editted;
+                    edited = VBasic(text);
+                    return edited;
                 case "CSS":
-                    editted = CSS(text);
-                    return editted;
+                    edited = CSS(text);
+                    return edited;
                 case "PHP":
-                    editted = PHP(text);
-                    return editted;
+                    edited = PHP(text);
+                    return edited;
                 case "SQL":
-                    editted = SQL(text);
-                    return editted;
+                    edited = SQL(text);
+                    return edited;
                 case "XML":
-                    editted = XML(text);
-                    return editted;
+                    edited = XML(text);
+                    return edited;
                 case "Ruby":
-                    editted = Ruby(text);
-                    return editted;
+                    edited = Ruby(text);
+                    return edited;
                 case "Python":
-                    editted = Python(text);
-                    return editted;
+                    edited = Python(text);
+                    return edited;
                 case "Assembly":
-                    editted = Assembly(text);
-                    return editted;
+                    edited = Assembly(text);
+                    return edited;
                 case "AppleScript":
-                    editted = AppleScript(text);
-                    return editted;
+                    edited = AppleScript(text);
+                    return edited;
                 case "ActionScript":
-                    editted = ActionScript(text);
-                    return editted;
+                    edited = ActionScript(text);
+                    return edited;
                 default:
-                    editted = Bash(text);
-                    return editted;
+                    edited = Bash(text);
+                    return edited;
             }
         }
 
@@ -355,9 +355,9 @@ namespace XComment
                 EditPoint objStart = activeDoc.StartPoint.CreateEditPoint();
                 EditPoint objEnd = activeDoc.EndPoint.CreateEditPoint();
                 string text = activeDoc.CreateEditPoint(objStart).GetText(objEnd);
-                string editted = delComments(text, filetype);
-                editted = removeWhiteSpace(editted);
-                objStart.ReplaceText(objEnd, editted, (int)vsEPReplaceTextOptions.vsEPReplaceTextAutoformat);
+                string edited = delComments(text, filetype);
+                edited = removeWhiteSpace(edited);
+                objStart.ReplaceText(objEnd, edited, (int)vsEPReplaceTextOptions.vsEPReplaceTextAutoformat);
             }
         }
 
