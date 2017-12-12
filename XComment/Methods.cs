@@ -349,7 +349,7 @@ namespace XComment
             string filePath = dTE.ActiveDocument.FullName;
             string filetype = fileType(filePath);
             if (filetype == "NULL")
-                MessageBox.Show("Language Not Supported!");
+                MessageBox.Show("File type used is not supported by the extension!", "LanguageNotSupportedException");
             else
             {
                 EditPoint objStart = activeDoc.StartPoint.CreateEditPoint();

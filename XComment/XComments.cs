@@ -1,8 +1,8 @@
 ﻿using System;
 using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using System.ComponentModel.Design;
+using System.Windows.Forms;
 
 namespace XComment
 {
@@ -12,7 +12,9 @@ namespace XComment
 
         public static readonly Guid CommandSet = new Guid("ab98f071-6193-40f8-ad98-87a00104190d");
 
-        private readonly Package _package;        
+        private readonly Package _package;
+
+        private static DTE dTE;
 
         public static XComments Instance
         {
@@ -34,6 +36,8 @@ namespace XComment
                 OleMenuCommand command = new OleMenuCommand(Callback, commandId);
                 commandService.AddCommand(command);
             }
+
+            dTE = Package.GetGlobalService(typeof(DTE)) as DTE;
         }
 
         public static void Initialize(Package package)
@@ -48,11 +52,16 @@ namespace XComment
 
         private void ExecuteCommand(OleMenuCommand button)
         {
-            DTE dTE = Package.GetGlobalService(typeof(DTE)) as DTE;
+            try
+            {
+                TextDocument activeDoc = dTE.ActiveDocument.Object() as TextDocument;
 
-            TextDocument activeDoc = dTE.ActiveDocument.Object() as TextDocument;
-
-            Methods.Apply(dTE, activeDoc);
+                Methods.Apply(dTE, activeDoc);
+            }
+            catch (NullReferenceException nex)
+            {
+                MessageBox.Show(nex.Message, "NullReferenceException");
+            }
         }
     }
 }
