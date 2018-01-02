@@ -26,7 +26,10 @@ namespace XComment
 
         private XComments(Package package)
         {
-            _package = package ?? throw new ArgumentNullException(nameof(package));
+            if (package == null)
+            {
+                throw new ArgumentNullException("package");
+            }
 
             OleMenuCommandService commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
 
