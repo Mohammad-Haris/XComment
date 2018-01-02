@@ -26,7 +26,9 @@ namespace XComment
 
         private XComments(Package package)
         {
-            if (package == null)
+            _package = package;
+
+            if (_package == null)
             {
                 throw new ArgumentNullException("package");
             }
